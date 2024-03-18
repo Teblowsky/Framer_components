@@ -1,20 +1,17 @@
 <style>
-  /* Definiowanie podstawowego stylu gwiazd */
   .star {
     position: fixed;
-    border-radius: 50%; /* Zapewnia okrągły kształt gwiazdy */
+    border-radius: 50%; 
     background: white;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
     opacity: 0.8;
   }
 
-  /* Animacja migotania gwiazd */
   @keyframes twinkle {
     0%, 100% { opacity: 0.8; }
     50% { opacity: 0.4; }
   }
-  
-  /* Animacja delikatnego ruchu gwiazd */
+
   @keyframes float {
     0%, 100% {
       transform: translate(0, 0);
@@ -35,20 +32,18 @@
     star.style.top = `${Math.random() * window.innerHeight}px`;
     star.style.left = `${Math.random() * window.innerWidth}px`;
 
-    // Czas trwania i opóźnienie animacji dla każdej gwiazdy
     const twinkleDuration = Math.random() * 5 + 1;
     const floatDuration = Math.random() * 3 + 2;
     const floatDelay = Math.random() * 5;
-    
-    // Losowe wartości translacji dla animacji pływania
+
     const floatTranslateX = (Math.random() - 0.5) * 50; // wartości od -25 do 25px
     const floatTranslateY = (Math.random() - 0.5) * 50; // wartości od -25 do 25px
 
-    // Ustawianie zmiennych CSS dla animacji pływania
+
     star.style.setProperty('--float-translate-x', `${floatTranslateX}px`);
     star.style.setProperty('--float-translate-y', `${floatTranslateY}px`);
 
-    // Animacja migotania i pływania do gwiazd
+  
     star.style.animation = `twinkle ${twinkleDuration}s linear infinite, float ${floatDuration}s linear ${floatDelay}s infinite`;
 
     return star;
@@ -60,7 +55,6 @@
     }
   }
 
-  // Ilość gwiazd po załadowaniu strony
   window.onload = function() {
     createStars(300);
   };
