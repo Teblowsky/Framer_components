@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Frame } from "framer"
 
-// Komponent pojedynczego logo
 const Logo = ({ logoLink, x, y, width = 60, height = 60 }) => (
     <Frame
         width={width}
@@ -24,7 +23,6 @@ const Logo = ({ logoLink, x, y, width = 60, height = 60 }) => (
     </Frame>
 )
 
-// Komponent dla pojedynczej orbity
 const LogoOrbit = ({ radius, numLogos, logoLinks, speed }) => {
     const baseWidth = 600
     const baseHeight = 600
@@ -40,19 +38,18 @@ const LogoOrbit = ({ radius, numLogos, logoLinks, speed }) => {
     const angleStep = (2 * Math.PI) / numLogos
 
     const calculateLogoPosition = (radius, angle) => {
-        const x = baseWidth / 2 + radius * Math.cos(angle) - 30 // Odejmujemy 30, aby logo było wyśrodkowane na orbicie
-        const y = baseHeight / 2 + radius * Math.sin(angle) - 30 // Jak wyżej
+        const x = baseWidth / 2 + radius * Math.cos(angle) - 30 
+        const y = baseHeight / 2 + radius * Math.sin(angle) - 30
         return { x, y }
     }
 
     return logoLinks.map((logoLink, index) => {
-        const angle = angleStep * index + time / 100 // Zmiana pozycji z czasem
+        const angle = angleStep * index + time / 100
         const { x, y } = calculateLogoPosition(radius, angle)
         return <Logo key={index} logoLink={logoLink} x={x} y={y} />
     })
 }
 
-// Komponenty dla orbit
 export const OuterOrbit = ({ logoLinks }) => (
     <LogoOrbit
         radius={250}
@@ -71,9 +68,7 @@ export const InnerOrbit = ({ logoLinks }) => (
     />
 )
 
-// Komponent główny, który łączy orbity i zawiera większe centralne logo
 export function LogoCircle() {
-    // Linki do obrazów logo dla obu orbit
     const logoLinksOuter = [
         "https://imgur.com/EX4X1Ua.png",
         "https://imgur.com/cZFLMtD.png",
@@ -92,12 +87,11 @@ export function LogoCircle() {
         "https://imgur.com/4NBED9d.png",
     ]
 
-    // Link do centralnego logo (planety)
+
     const centralLogoLink = "https://i.imgur.com/zl53Qw9.png"
 
-    // Aby wyśrodkować większe logo, należy dostosować jego pozycję
-    const centralLogoSize = 100 // Nowy rozmiar logo
-    const offset = centralLogoSize / 2 // Obliczanie przesunięcia do wyśrodkowania
+    const centralLogoSize = 100
+    const offset = centralLogoSize / 2
 
     return (
         <Frame
